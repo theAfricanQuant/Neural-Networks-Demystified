@@ -36,8 +36,7 @@ class Neural_Network(object):
         self.z2 = np.dot(X, self.W1)
         self.a2 = self.sigmoid(self.z2)
         self.z3 = np.dot(self.a2, self.W2)
-        yHat = self.sigmoid(self.z3) 
-        return yHat
+        return self.sigmoid(self.z3)
         
     def sigmoid(self, z):
         #Apply sigmoid activation function to scalar, vector, or matrix
@@ -50,8 +49,7 @@ class Neural_Network(object):
     def costFunction(self, X, y):
         #Compute cost for given X,y, use weights already stored in class.
         self.yHat = self.forward(X)
-        J = 0.5*sum((y-self.yHat)**2)
-        return J
+        return 0.5*sum((y-self.yHat)**2)
         
     def costFunctionPrime(self, X, y):
         #Compute derivative with respect to W and W2 for a given X and y:
@@ -67,9 +65,7 @@ class Neural_Network(object):
     
     #Helper Functions for interacting with other classes:
     def getParams(self):
-        #Get W1 and W2 unrolled into vector:
-        params = np.concatenate((self.W1.ravel(), self.W2.ravel()))
-        return params
+        return np.concatenate((self.W1.ravel(), self.W2.ravel()))
     
     def setParams(self, params):
         #Set W1 and W2 using single paramater vector.

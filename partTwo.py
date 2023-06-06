@@ -36,8 +36,7 @@ class Neural_Network(object):
         self.z2 = np.dot(X, self.W1)
         self.a2 = self.sigmoid(self.z2)
         self.z3 = np.dot(self.a2, self.W2)
-        yHat = self.sigmoid(self.z3) 
-        return yHat
+        return self.sigmoid(self.z3)
         
     def sigmoid(self, z):
         #Apply sigmoid activation function to scalar, vector, or matrix
